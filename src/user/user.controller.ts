@@ -23,5 +23,4 @@ export class UserController {
   }
   // TODO Modification user
   // TODO Edition user
-
 }

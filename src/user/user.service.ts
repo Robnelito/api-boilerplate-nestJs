@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
 import { Query } from './user.controller';
 
-let PrismaUserDataSelect = {
+const PrismaUserDataSelect = {
   id: true,
   email: true,
   firstName: true,
-}
+};
 @Injectable()
 export class UserService {
   constructor(private readonly prisma: PrismaService) {}
