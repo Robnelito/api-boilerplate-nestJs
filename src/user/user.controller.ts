@@ -4,7 +4,7 @@ import { UserService } from './user.service';
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
-  @Get('/')
+  @Get()
   getUsers(): object {
     return this.userService.getUsers();
   }
