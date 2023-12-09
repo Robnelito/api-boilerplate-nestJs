@@ -2,16 +2,17 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
 import { Query } from './user.controller';
 
+let PrismaUserDataSelect = {
+  id: true,
+  email: true,
+  firstName: true,
+}
 @Injectable()
 export class UserService {
   constructor(private readonly prisma: PrismaService) {}
   async getUsers() {
     return this.prisma.user.findMany({
-      select: {
-        id: true,
-        email: true,
-        firstName: true,
-      },
+      select: PrismaUserDataSelect,
     });
   }
 
@@ -20,11 +21,7 @@ export class UserService {
       where: {
         id: userId,
       },
-      select: {
-        id: true,
-        email: true,
-        firstName: true,
-      },
+      select: PrismaUserDataSelect,
     });
   }
 
@@ -34,11 +31,7 @@ export class UserService {
       where: {
         firstName: { contains: requestBody.query },
       },
-      select: {
-        id: true,
-        email: true,
-        firstName: true,
-      },
+      select: PrismaUserDataSelect,
     });
   }
 }

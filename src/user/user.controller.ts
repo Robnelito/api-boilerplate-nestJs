@@ -21,4 +21,7 @@ export class UserController {
   async searchUser(@Body() query: Query) {
     return this.userService.searchUsers({ requestBody: query });
   }
+  // TODO Modification user
+  // TODO Edition user
+
 }
