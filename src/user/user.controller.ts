@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 
 export type Query = { query: string };
@@ -11,7 +18,7 @@ export class UserController {
   }
 
   @Get('/:userId')
-  getUser(@Param('userId') userId: string): object {
+  getUser(@Param('userId', ParseIntPipe) userId: string): object {
     return this.userService.getUser({
       userId,
     });
